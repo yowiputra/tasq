@@ -11,7 +11,8 @@ const knexLogger  = require('knex-logger');
 const knexConfig  = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 
-const users = require('./routes/users');
+const getAllUsers = require('./routes/getAllUsers');
+const getUserTasks = require('./routes/getUserTasks');
 const port  = process.env.SERVER_PORT || 3001;
 
 const app = express();
@@ -22,7 +23,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/users', users);
+// Get routes
+app.use('/users', getAllUsers);
+app.use('/usertasks', getUserTasks);
+
+// Post routes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
