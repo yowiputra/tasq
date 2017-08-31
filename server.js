@@ -1,22 +1,27 @@
+require('dotenv').config();
+
+const ENV = process.env.ENV || "development";
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const knexLogger  = require('knex-logger');
+const knexConfig  = require("./knexfile");
+const knex = require("knex")(knexConfig[ENV]);
 
-const index = require('./routes/index');
 const users = require('./routes/users');
-const port  = process.env.PORT || 3001;
+const port  = process.env.SERVER_PORT || 3001;
 
 const app = express();
 
 app.use(logger('dev'));
+app.use(knexLogger(knex));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -38,5 +43,5 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log(`catapult listening on port ${port}!`);
+  console.log(`tasq server listening on port ${port}!`);
 })
