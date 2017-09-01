@@ -9,9 +9,12 @@ class App extends Component {
     super(props);
     this.state = {
       users: [],
-      tasks: []
+      tasks: [],
+      taskUserId: 0
     }
     this.getTasks = this.getTasks.bind(this);
+    this.postUser = this.postUser.bind(this);
+    this.postTask = this.postTask.bind(this);
   }
 
   componentDidMount() {
@@ -24,12 +27,13 @@ class App extends Component {
   getTasks(userid) {
     axios.get(`/usertasks/${userid}`)
     .then(({data}) => this.setState({
-      tasks: data
+      tasks: data,
+      taskUserId: userid
     }));
   }
 
   postUser(username){
-    axios.post('/adduser', {username})
+    axios.post('/adduser', {name: username})
     .then(({data}) => {
       this.state.users.push(data);
       this.setState({
@@ -39,11 +43,12 @@ class App extends Component {
   }
 
   postTask(task, userid){
-    axios.post(`/addtask/${userid}`, {task})
+    axios.post(`/addtask/${userid}`, {task: task})
     .then(({data}) => {
       this.state.tasks.push(data);
       this.setState({
-        tasks: this.state.tasks
+        tasks: this.state.tasks,
+        taskUserId: userid
       })
     })
   }
@@ -52,12 +57,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <div className="user-container">
-            <UserList userData={this.state.users} getTasks={this.getTasks} />
-          </div>
-          <div className="task-container">
-            <TaskList taskData={this.state.tasks} getTasks={this.getTasks} />
-          </div>
+          <UserList
+            userData={this.state.users}
+            getTasks={this.getTasks}
+            postUser={this.postUser} />
+          <TaskList
+            taskData={this.state.tasks}
+            taskUserId={this.state.taskUserId}
+            postTask={this.postTask} />
         </div>
       </div>
     );

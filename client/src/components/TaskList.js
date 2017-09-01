@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TaskInput from './TaskInput'
 
 class TaskList extends Component {
   taskStyle(done){
@@ -11,7 +12,7 @@ class TaskList extends Component {
 
   render(){
     return(
-      <div className="taskListBox">
+      <div className="task-list-box">
         <h1>Tasks</h1>
         <ul>
           {this.props.taskData.map(task =>
@@ -20,6 +21,9 @@ class TaskList extends Component {
             </li>
           )}
         </ul>
+        <TaskInput
+          postTask={this.props.postTask}
+          userid={this.props.taskUserId} />
       </div>
     )
   }
