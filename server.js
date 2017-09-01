@@ -1,33 +1,36 @@
 require('dotenv').config();
 
+// dependencies
 const ENV = process.env.ENV || "development";
 const express = require('express');
-const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const knexLogger  = require('knex-logger');
 const knexConfig  = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 
+// require routes
 const getAllUsers = require('./routes/getAllUsers');
 const getUserTasks = require('./routes/getUserTasks');
+const addUser = require('./routes/addUser');
+const addTask = require('./routes/addTask');
+// const completeTask = require('./routes/completeTask');
+// const deleteTask = require('./routes/deleteTask');
+
 const port  = process.env.SERVER_PORT || 3001;
 
+// server setup
 const app = express();
-
 app.use(logger('dev'));
 app.use(knexLogger(knex));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
-// Get routes
+// setup routes
 app.use('/users', getAllUsers);
 app.use('/usertasks', getUserTasks);
-
-// Post routes
+app.use('/adduser', addUser);
+app.use('/addtask', addTask);
+// app.use('/completeTask', completeTask);
+// app.use('/deleteTask', deleteTask);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

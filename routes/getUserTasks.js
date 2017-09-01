@@ -3,7 +3,7 @@ const router = express.Router();
 const tasks = require('../models/task.js');
 
 /* GET users listing. */
-router.get('/:userid/tasks', function(req, res, next) {
+router.get('/:userid', function(req, res, next) {
   tasks.query({
     where: {user_id: req.params.userid}
   })
