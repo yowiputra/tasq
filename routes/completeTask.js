@@ -1,18 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const users = require('../models/user.js');
+const tasks = require('../models/task.js');
 
 router.post('/', function(req, res, next) {
-  const {name} = req.body;
-  users.forge({name: name})
-  .save()
+  const {bool, id, userid} = req.body;
+  tasks.where({id: id})
+  .save({done: bool}, {patch: true})
   .then(() => {
-    users.query({
-      where: {name: name}
+    tasks.query({
+      where: {user_id: userid}
     })
-    .fetch()
+    .fetchAll()
     .then(data => {
-      console.log(data);
       res.json(data.toJSON());
     })
   })

@@ -30,7 +30,6 @@ class UserInput extends Component {
 
   render(){
     const userInput = <input
-      placeholder="Add your name and hit ENTER"
       onChange={this.textInputHandler}
       onKeyDown={this.enterContentHandler}/>;
 

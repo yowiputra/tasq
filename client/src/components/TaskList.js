@@ -16,8 +16,9 @@ class TaskList extends Component {
         <h1>Tasks</h1>
         <ul>
           {this.props.taskData.map(task =>
-            <li key={task.id} style={this.taskStyle(task.done)}>
-              {task.task}
+            <li className="task-item" key={task.id} style={this.taskStyle(task.done)}>
+              <span onClick={() => this.props.completeTask(task.done, task.id, task.user_id)}>{task.task}</span>
+              <button onClick={() => this.props.deleteTask(task.id, task.user_id)}>Delete</button>
             </li>
           )}
         </ul>

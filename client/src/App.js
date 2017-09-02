@@ -15,30 +15,39 @@ class App extends Component {
     this.getTasks = this.getTasks.bind(this);
     this.postUser = this.postUser.bind(this);
     this.postTask = this.postTask.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
+    this.completeTask = this.completeTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
+  }
+
+  setUsers(users){
+    this.setState({
+      users: users
+    })
+  }
+
+  setTasks(data, userid){
+    this.setState({
+      tasks: data,
+      taskUserId: userid
+    })
   }
 
   componentDidMount() {
     axios.get('/users')
-    .then(({data}) => this.setState({
-      users: data
-    }));
+    .then(({data}) => this.setUsers(data));
   }
 
   getTasks(userid) {
     axios.get(`/usertasks/${userid}`)
-    .then(({data}) => this.setState({
-      tasks: data,
-      taskUserId: userid
-    }));
+    .then(({data}) => this.setTasks(data, userid));
   }
 
   postUser(username){
     axios.post('/adduser', {name: username})
     .then(({data}) => {
       this.state.users.push(data);
-      this.setState({
-        users: this.state.users
-      })
+      this.setUsers(this.state.users);
     })
   }
 
@@ -46,11 +55,30 @@ class App extends Component {
     axios.post(`/addtask/${userid}`, {task: task})
     .then(({data}) => {
       this.state.tasks.push(data);
-      this.setState({
-        tasks: this.state.tasks,
-        taskUserId: userid
-      })
+      this.setTasks(this.state.tasks, userid);
     })
+  }
+
+  deleteUser(userid){
+    axios.post('/deleteuser',{id: userid})
+    .then(({data}) => this.setUsers(data))
+  }
+
+  completeTask(done, taskid, userid){
+    axios.post('/completetask', {
+      bool: !done,
+      id: taskid,
+      userid: userid
+    })
+    .then(({data}) => this.setTasks(data, userid))
+  }
+
+  deleteTask(taskid, userid){
+    axios.post('/deletetask', {
+      id: taskid,
+      userid: userid
+    })
+    .then(({data}) => this.setTasks(data, userid))
   }
 
   render() {
@@ -60,11 +88,14 @@ class App extends Component {
           <UserList
             userData={this.state.users}
             getTasks={this.getTasks}
-            postUser={this.postUser} />
+            postUser={this.postUser}
+            deleteUser={this.deleteUser} />
           <TaskList
             taskData={this.state.tasks}
             taskUserId={this.state.taskUserId}
-            postTask={this.postTask} />
+            postTask={this.postTask}
+            completeTask={this.completeTask}
+            deleteTask={this.deleteTask} />
         </div>
       </div>
     );

@@ -28,7 +28,6 @@ class TaskInput extends Component {
 
   render(){
     const taskInput = <input
-      placeholder="Add your task and hit ENTER"
       onChange={this.textInputHandler}
       onKeyDown={this.enterContentHandler}/>;
 

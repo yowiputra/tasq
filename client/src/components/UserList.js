@@ -8,8 +8,9 @@ class UserList extends Component {
         <h1>Users</h1>
         <ul>
           {this.props.userData.map(user =>
-            <li key={user.id} onClick={() => this.props.getTasks(user.id)}>
-              {user.name}
+            <li className="user-item" key={user.id}>
+              <span onClick={() => this.props.getTasks(user.id)}>{user.name}</span>
+              <button onClick={() => this.props.deleteUser(user.id)}>Delete</button>
             </li>
           )}
         </ul>

@@ -3,16 +3,12 @@ const router = express.Router();
 const users = require('../models/user.js');
 
 router.post('/', function(req, res, next) {
-  const {name} = req.body;
-  users.forge({name: name})
-  .save()
+  const {id} = req.body;
+  users.where({id: id})
+  .destroy()
   .then(() => {
-    users.query({
-      where: {name: name}
-    })
-    .fetch()
+    users.fetchAll()
     .then(data => {
-      console.log(data);
       res.json(data.toJSON());
     })
   })
