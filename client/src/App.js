@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './styles/App.css';
 import UserList from './components/UserList'
 import TaskList from './components/TaskList'
@@ -85,6 +86,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
+          <Link to="/tableview">Switch Views</Link>
           <UserList
             userData={this.state.users}
             taskUserId={this.state.taskUserId}
