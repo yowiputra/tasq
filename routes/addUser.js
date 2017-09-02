@@ -12,7 +12,6 @@ router.post('/', function(req, res, next) {
     })
     .fetch()
     .then(data => {
-      console.log(data);
       res.json(data.toJSON());
     })
   })

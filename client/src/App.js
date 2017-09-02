@@ -87,6 +87,7 @@ class App extends Component {
         <div className="container">
           <UserList
             userData={this.state.users}
+            taskUserId={this.state.taskUserId}
             getTasks={this.getTasks}
             postUser={this.postUser}
             deleteUser={this.deleteUser} />

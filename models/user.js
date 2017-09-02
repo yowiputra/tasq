@@ -1,5 +1,5 @@
 const bookshelf = require('../bookshelf');
-const tasks = require('../models/task.js');
+const tasks = require('./task.js');
 
 module.exports = bookshelf.Model.extend({
   tableName: 'users',
