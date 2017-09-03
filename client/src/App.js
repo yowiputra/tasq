@@ -12,7 +12,7 @@ class App extends Component {
       users: [],
       tasks: [],
       taskUserId: 0
-    }
+    };
     this.getTasks = this.getTasks.bind(this);
     this.postUser = this.postUser.bind(this);
     this.postTask = this.postTask.bind(this);
@@ -32,11 +32,6 @@ class App extends Component {
       tasks: data,
       taskUserId: userid
     })
-  }
-
-  componentDidMount() {
-    axios.get('/users')
-    .then(({data}) => this.setUsers(data));
   }
 
   getTasks(userid) {
@@ -80,6 +75,11 @@ class App extends Component {
       userid: userid
     })
     .then(({data}) => this.setTasks(data, userid))
+  }
+
+  componentDidMount() {
+    axios.get('/users')
+    .then(({data}) => this.setUsers(data));
   }
 
   render() {

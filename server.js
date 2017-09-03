@@ -12,6 +12,7 @@ const knex = require("knex")(knexConfig[ENV]);
 
 // require the routes
 const getAllUsers = require('./routes/getAllUsers');
+const getAllTasks = require('./routes/getAllTasks')
 const getUserTasks = require('./routes/getUserTasks');
 const addUser = require('./routes/addUser');
 const addTask = require('./routes/addTask');
@@ -30,6 +31,7 @@ app.set('view engine', 'ejs');
 
 // setup the routes
 app.use('/users', getAllUsers);
+app.use('/tasks', getAllTasks);
 app.use('/usertasks', getUserTasks);
 app.use('/adduser', addUser);
 app.use('/addtask', addTask);
