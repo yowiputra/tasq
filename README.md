@@ -6,9 +6,9 @@ This app presents the tasks in 2 views:
 - A table view where all the tasks are consolidated into 1 table.
 
 ## screenshots
-![Screenshot of the homepage]()
-![Screenshot of the user tasks]()
-![Screenshot of the table view]()
+![Screenshot of the homepage](https://github.com/yowiputra/tasq/blob/master/screenshots/homepage.png)
+![Screenshot of the user tasks](https://github.com/yowiputra/tasq/blob/master/screenshots/usertasks.png)
+![Screenshot of the table view](https://github.com/yowiputra/tasq/blob/master/screenshots/tableview.png)
 
 ## instructions
 Server side:
