@@ -14,8 +14,8 @@ class NavBar extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
-              <NavItem>
+            <Nav pullRight>
+              <NavItem eventKey={1}>
                 <Link to={this.props.link}>Switch Views</Link>
               </NavItem>
             </Nav>

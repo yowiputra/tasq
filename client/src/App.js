@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Jumbotron, Grid } from 'react-bootstrap';
-import './styles/App.css';
 import NavBar from './components/NavBar'
 import UserList from './components/UserList'
 import TaskList from './components/TaskList'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Jumbotron, Grid } from 'react-bootstrap';
+import { Jumbotron } from 'react-bootstrap';
 import NavBar from './NavBar'
 import TaskTable from './TaskTable'
 
@@ -36,11 +36,9 @@ class TableView extends Component {
       <div>
         <NavBar link="/" />
         <Jumbotron>
-          <Grid>
-            <div className="container">
-              <TaskTable tasks={this.state.tasks} users={this.state.users} />
-            </div>
-          </Grid>
+          <div className="container">
+            <TaskTable tasks={this.state.tasks} users={this.state.users} />
+          </div>
         </Jumbotron>
       </div>
     )

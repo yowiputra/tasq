@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Table } from 'react-bootstrap';
+import '../styles/tasktable.css'
 import find from 'lodash/find';
 
 class TaskTable extends Component {
@@ -17,8 +19,8 @@ class TaskTable extends Component {
 
   render() {
     return (
-      <div>
-        <table>
+      <div className="task-table">
+        <Table responsive striped bordered hover>
           <thead>
             <tr>
               <th>Users</th>
@@ -37,7 +39,7 @@ class TaskTable extends Component {
               </tr>
             )}
           </tbody>
-        </table>
+        </Table>
       </div>
     )
   }

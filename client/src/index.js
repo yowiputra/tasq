@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
+import './styles/index.css'
 import App from './App';
 import TableView from './components/TableView';
 import registerServiceWorker from './registerServiceWorker';
