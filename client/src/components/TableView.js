@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Jumbotron } from 'react-bootstrap';
+import orderBy from 'lodash/orderBy';
 import NavBar from './NavBar'
 import TaskTable from './TaskTable'
 
@@ -26,7 +27,7 @@ class TableView extends Component {
     .then(axios.spread((userData, taskData) => {
       this.setState({
         users: userData.data,
-        tasks: taskData.data
+        tasks: orderBy(taskData.data, ['created_at'], ['asc'])
       })
     }))
   }

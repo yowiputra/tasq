@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Jumbotron, Grid, Row, Col } from 'react-bootstrap';
+import orderBy from 'lodash/orderBy';
 import NavBar from './components/NavBar'
 import UserList from './components/UserList'
 import TaskList from './components/TaskList'
@@ -29,7 +30,7 @@ class App extends Component {
 
   setTasks(data, userid){
     this.setState({
-      tasks: data,
+      tasks: orderBy(data, ['created_at'], ['asc']),
       taskUserId: userid
     })
   }

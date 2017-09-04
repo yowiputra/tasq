@@ -20,9 +20,9 @@ class UserList extends Component {
         <Panel header={title}>
           <ListGroup>
             {this.props.userData.map(user =>
-              <ListGroupItem key={user.id} onClick={() => this.props.getTasks(user.id)} bsStyle={this.userStyle(user.id)}>
+              <ListGroupItem onClick={() => this.props.getTasks(user.id)} bsStyle={this.userStyle(user.id)}>
                 <span className="item-name-span">{user.name}</span>
-                <Button bsStyle="danger" onClick={() => this.props.deleteUser(user.id)}>Delete</Button>
+                <Button bsStyle="danger" onClick={() => this.props.deleteUser(user.id)}>X</Button>
               </ListGroupItem>
             )}
           </ListGroup>

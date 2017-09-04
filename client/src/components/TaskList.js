@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import { Panel, ListGroup, ListGroupItem, Button, Jumbotron } from 'react-bootstrap';
 import TaskInput from './TaskInput'
 import '../styles/panels.css'
 
@@ -18,14 +18,23 @@ class TaskList extends Component {
       <h2>Tasks</h2>
     );
 
-    return(
-      <div className="task-list-box">
+    let taskView = null;
+
+    if(this.props.taskUserId === 0){
+      taskView = (
+        <Jumbotron>
+          <h2>Hello, there!</h2>
+          <p>Click on a user on the left or create a new one!</p>
+        </Jumbotron>
+      )
+    } else {
+      taskView = (
         <Panel header={title}>
           <ListGroup>
             {this.props.taskData.map(task =>
-              <ListGroupItem key={task.id} onClick={() => this.props.completeTask(task.done, task.id, task.user_id)}>
+              <ListGroupItem onClick={() => this.props.completeTask(task.done, task.id, task.user_id)}>
                 <span className="item-name-span" style={this.taskStyle(task.done)}>{task.task}</span>
-                <Button bsStyle="danger" onClick={() => this.props.deleteTask(task.id, task.user_id)}>Delete</Button>
+                <Button bsStyle="danger" onClick={() => this.props.deleteTask(task.id, task.user_id)}>X</Button>
               </ListGroupItem>
             )}
           </ListGroup>
@@ -33,6 +42,12 @@ class TaskList extends Component {
             postTask={this.props.postTask}
             userid={this.props.taskUserId} />
         </Panel>
+      )
+    }
+
+    return(
+      <div className="task-list-box">
+        {taskView}
       </div>
     )
   }
