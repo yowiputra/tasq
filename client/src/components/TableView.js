@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import TaskTable from './TaskTable.js'
+import { Jumbotron, Grid } from 'react-bootstrap';
+import NavBar from './NavBar'
+import TaskTable from './TaskTable'
 
 class TableView extends Component {
   constructor(props){
@@ -33,8 +34,14 @@ class TableView extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Switch Views</Link>
-        <TaskTable tasks={this.state.tasks} users={this.state.users} />
+        <NavBar link="/" />
+        <Jumbotron>
+          <Grid>
+            <div className="container">
+              <TaskTable tasks={this.state.tasks} users={this.state.users} />
+            </div>
+          </Grid>
+        </Jumbotron>
       </div>
     )
   }

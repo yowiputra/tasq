@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Jumbotron, Grid } from 'react-bootstrap';
 import './styles/App.css';
+import NavBar from './components/NavBar'
 import UserList from './components/UserList'
 import TaskList from './components/TaskList'
 
@@ -85,21 +86,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <Link to="/tableview">Switch Views</Link>
-          <UserList
-            userData={this.state.users}
-            taskUserId={this.state.taskUserId}
-            getTasks={this.getTasks}
-            postUser={this.postUser}
-            deleteUser={this.deleteUser} />
-          <TaskList
-            taskData={this.state.tasks}
-            taskUserId={this.state.taskUserId}
-            postTask={this.postTask}
-            completeTask={this.completeTask}
-            deleteTask={this.deleteTask} />
-        </div>
+        <NavBar link="/tableview" />
+        <Jumbotron>
+          <Grid>
+            <div className="container">
+              <UserList
+                userData={this.state.users}
+                taskUserId={this.state.taskUserId}
+                getTasks={this.getTasks}
+                postUser={this.postUser}
+                deleteUser={this.deleteUser} />
+              <TaskList
+                taskData={this.state.tasks}
+                taskUserId={this.state.taskUserId}
+                postTask={this.postTask}
+                completeTask={this.completeTask}
+                deleteTask={this.deleteTask} />
+            </div>
+          </Grid>
+        </Jumbotron>
       </div>
     );
   }
