@@ -1,0 +1,7 @@
+Button {
+  float: right;
+}
+
+.item-name-span {
+  vertical-align: -webkit-baseline-middle;
+}

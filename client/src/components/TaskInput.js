@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormControl } from 'react-bootstrap';
 
 class TaskInput extends Component {
   constructor(props){
@@ -27,12 +28,16 @@ class TaskInput extends Component {
   }
 
   render(){
-    const taskInput = <input
-      onChange={this.textInputHandler}
-      onKeyDown={this.enterContentHandler}/>;
+    const taskInput = <FormControl
+            type="text"
+            value={this.state.input}
+            placeholder="Enter task"
+            onChange={this.textInputHandler}
+            onKeyDown={this.enterContentHandler}
+          />;
 
     return(
-      <div className="task-input-box">
+      <div className="input-box">
         {taskInput}
       </div>
     )
