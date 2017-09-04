@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Jumbotron, Grid } from 'react-bootstrap';
+import { Jumbotron, Grid, Row, Col } from 'react-bootstrap';
 import NavBar from './components/NavBar'
 import UserList from './components/UserList'
 import TaskList from './components/TaskList'
@@ -87,22 +87,28 @@ class App extends Component {
       <div className="App">
         <NavBar link="/tableview" />
         <Jumbotron>
-          <Grid>
-            <div className="container">
-              <UserList
-                userData={this.state.users}
-                taskUserId={this.state.taskUserId}
-                getTasks={this.getTasks}
-                postUser={this.postUser}
-                deleteUser={this.deleteUser} />
-              <TaskList
-                taskData={this.state.tasks}
-                taskUserId={this.state.taskUserId}
-                postTask={this.postTask}
-                completeTask={this.completeTask}
-                deleteTask={this.deleteTask} />
-            </div>
-          </Grid>
+          <div className="container">
+            <Grid>
+              <Row className="show-grid">
+                <Col xs={6} md={4}>
+                  <UserList
+                    userData={this.state.users}
+                    taskUserId={this.state.taskUserId}
+                    getTasks={this.getTasks}
+                    postUser={this.postUser}
+                    deleteUser={this.deleteUser} />
+                </Col>
+                <Col xs={12} md={8}>
+                  <TaskList
+                    taskData={this.state.tasks}
+                    taskUserId={this.state.taskUserId}
+                    postTask={this.postTask}
+                    completeTask={this.completeTask}
+                    deleteTask={this.deleteTask} />
+                </Col>
+              </Row>
+            </Grid>
+          </div>
         </Jumbotron>
       </div>
     );
