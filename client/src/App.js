@@ -58,7 +58,12 @@ class App extends Component {
 
   deleteUser(userid){
     axios.post('/deleteuser',{id: userid})
-    .then(({data}) => this.setUsers(data))
+    .then(({data}) => {
+      this.setState({
+        users: data,
+        taskUserId: 0
+      })
+    });
   }
 
   completeTask(done, taskid, userid){
@@ -67,7 +72,7 @@ class App extends Component {
       id: taskid,
       userid: userid
     })
-    .then(({data}) => this.setTasks(data, userid))
+    .then(({data}) => this.setTasks(data, userid));
   }
 
   deleteTask(taskid, userid){
@@ -75,7 +80,7 @@ class App extends Component {
       id: taskid,
       userid: userid
     })
-    .then(({data}) => this.setTasks(data, userid))
+    .then(({data}) => this.setTasks(data, userid));
   }
 
   componentDidMount() {
