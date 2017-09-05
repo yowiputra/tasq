@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Jumbotron, Grid, Row, Col } from 'react-bootstrap';
 import orderBy from 'lodash/orderBy';
-import NavBar from './components/NavBar'
-import UserList from './components/UserList'
-import TaskList from './components/TaskList'
+import './styles/app.css';
+import NavBar from './components/NavBar';
+import UserList from './components/UserList';
+import TaskList from './components/TaskList';
 
 class App extends Component {
   constructor(props){
@@ -94,26 +95,28 @@ class App extends Component {
         <NavBar link="/tableview" />
         <Jumbotron>
           <div className="container">
-            <Grid>
-              <Row className="show-grid">
-                <Col xs={6} md={4}>
-                  <UserList
-                    userData={this.state.users}
-                    taskUserId={this.state.taskUserId}
-                    getTasks={this.getTasks}
-                    postUser={this.postUser}
-                    deleteUser={this.deleteUser} />
-                </Col>
-                <Col xs={12} md={8}>
-                  <TaskList
-                    taskData={this.state.tasks}
-                    taskUserId={this.state.taskUserId}
-                    postTask={this.postTask}
-                    completeTask={this.completeTask}
-                    deleteTask={this.deleteTask} />
-                </Col>
-              </Row>
-            </Grid>
+            <div className="list-holder">
+              <Grid>
+                <Row className="show-grid">
+                  <Col xs={6} md={4}>
+                    <UserList
+                      userData={this.state.users}
+                      taskUserId={this.state.taskUserId}
+                      getTasks={this.getTasks}
+                      postUser={this.postUser}
+                      deleteUser={this.deleteUser} />
+                  </Col>
+                  <Col xs={12} md={8}>
+                    <TaskList
+                      taskData={this.state.tasks}
+                      taskUserId={this.state.taskUserId}
+                      postTask={this.postTask}
+                      completeTask={this.completeTask}
+                      deleteTask={this.deleteTask} />
+                  </Col>
+                </Row>
+              </Grid>
+            </div>
           </div>
         </Jumbotron>
       </div>
