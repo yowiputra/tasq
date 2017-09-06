@@ -16,9 +16,9 @@ This app presents the tasks in 2 views:
 Server side:
 - run  `npm install` to install the server dependencies.
 - copy the contents of the .env.example file into a .env file. Keep the contents the same.
-- on the terminal, run `pg`.
-- create a database with the name "tasq" by using the command `CREATE DATABASE tasq`.
-- exit the pg repl by typing `\q`.
+- assuming you have PostgreSQL setup on your machine, on the terminal, run `psql`.
+- in the CLI, create a database with the name "tasq" by using the command `CREATE DATABASE tasq`.
+- exit the PostgreSQL CLI by typing `\q`.
 - create the tables by running the command `knex migrate:latest`.
 - [OPTIONAL] add seed data by running the command `knex seed:run`.
 
