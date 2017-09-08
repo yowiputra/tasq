@@ -95,9 +95,9 @@ class App extends Component {
         <NavBar link="/tableview" />
         <div className="container">
           <div className="list-holder">
-            <Grid>
+            <Grid fluid>
               <Row className="show-grid">
-                <Col xs={6} md={4}>
+                <Col xs={12} md={4}>
                   <UserList
                     userData={this.state.users}
                     taskUserId={this.state.taskUserId}
