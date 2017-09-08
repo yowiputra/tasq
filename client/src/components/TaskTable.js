@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
-import '../styles/tasktable.css'
 import find from 'lodash/find';
 
 class TaskTable extends Component {
