@@ -10,8 +10,8 @@ router.post('/', function(req, res, next) {
     users.fetchAll()
     .then(data => {
       res.json(data.toJSON());
-    })
-  })
+    });
+  });
 });
 
 module.exports = router;

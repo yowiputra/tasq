@@ -9,7 +9,7 @@ router.get('/:userid', function(req, res, next) {
   .fetchAll()
   .then((data => {
     res.json(data.toJSON());
-  }))
+  }));
 });
 
 module.exports = router;
