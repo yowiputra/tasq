@@ -13,8 +13,8 @@ router.post('/', function(req, res, next) {
     .fetch()
     .then(data => {
       res.json(data.toJSON());
-    })
-  })
+    });
+  });
 });
 
 module.exports = router;

@@ -12,7 +12,7 @@ const knex = require("knex")(knexConfig[ENV]);
 
 // require the routes
 const getAllUsers = require('./routes/getAllUsers');
-const getAllTasks = require('./routes/getAllTasks')
+const getAllTasks = require('./routes/getAllTasks');
 const getUserTasks = require('./routes/getUserTasks');
 const addUser = require('./routes/addUser');
 const addTask = require('./routes/addTask');
@@ -41,4 +41,4 @@ app.use('/deleteuser', deleteUser);
 
 app.listen(port, () => {
   console.log(`tasq server listening on port ${port}!`);
-})
+});
